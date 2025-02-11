@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-table';
-import Input from './components/Input';
+import TableForm from './TableForm';
 
 const TableRender = () => {
     const [data, setData] = useState([{}]);
+    const [errors, setErrors] = useState({});
     const [company, setCompany] = useState("");
     const [contact, setContact] = useState("");
     const [country, setCountry] = useState("");
@@ -16,7 +17,17 @@ const TableRender = () => {
     }, []);
 
     const onSave = () => {
+        if (!company || !contact || country === "") {
+            // alert("Please fill all the fields.");
+            let errorsCopy = {};
+            errorsCopy.company = !company ? true : false;
+            errorsCopy.contact = !contact ? true : false;
+            errorsCopy.country = !country ? true : false;
+            setErrors(errorsCopy);
+            return;
+        }
         setData([...data, { company, "contact-name": contact, country_name: country }]);
+        setErrors({});
         setCompany("");
         setContact("");
         setCountry("");
@@ -49,7 +60,7 @@ const TableRender = () => {
                     <tr style={{ border: '1px solid black' }}>
                         <td style={{ border: '1px solid black' }}>{data[0].company}</td>
                         <td style={{ border: '1px solid black' }}>{data?.[0]?.["contact-name"] || "abc"}</td>
-                        <td style={{ border: '1px solid black' }}>{data && data[0].country_name || "India"}</td>
+                        <td style={{ border: '1px solid black' }}>{(data && data[0].country_name) || "India"}</td>
                     </tr>
                     {data.map((entry, index) => (
                         entry.company === "Garudaven" ? null : (
@@ -62,10 +73,16 @@ const TableRender = () => {
                     ))}
                 </table>
                 <div className='col-6'>
-                    <Input title="Company" id="company" placeholder="company name" value={company} setChangeValue={setCompany} />
-                    <Input title="Contact" id="contact" placeholder="contact name" value={contact} setChangeValue={setContact} />
-                    <Input title="Country" id="country" placeholder="country name" value={country} setChangeValue={setCountry} />
-                    <button className='btn btn-primary' onClick={onSave}>Add</button>
+                    <TableForm
+                        company={company}
+                        contact={contact}
+                        country={country}
+                        errors={errors}
+                        setCompany={setCompany}
+                        setContact={setContact}
+                        setCountry={setCountry}
+                        onSave={onSave}
+                    />
                 </div>
             </div>
         </>
