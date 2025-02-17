@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Table from 'react-table';
 import TableForm from './TableForm';
 
 const TableRender = () => {

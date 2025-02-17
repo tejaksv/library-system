@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import TableRender from './TableRender';
+import Main from './Main';
+// import TableRender from './TableRender';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TableRender />
+    {/* <TableRender /> */}
+    <Main/>
   </React.StrictMode>
 );
 
