@@ -39,8 +39,8 @@ function TableForm(props) {
                 isDisable={formMode === "edit"}
             />
             <Input title="Contact" id="contact" placeholder="contact name" value={contact} setChangeValue={setContact} error={errors.contact || false} />
-            <Select title="Country" id="country" setChangeValue={setCountry} value={country} />
-            {/* <Select title="Country" id="country" options={dropdownOptions} setChangeValue={setCountry} /> */}
+            {/* <Select title="Country" id="country" setChangeValue={setCountry} value={country} /> */}
+            <Select title="Country" id="country" options={dropdownOptions} setChangeValue={setCountry} />
             <Checkbox title="VIP" id="vip" defaultValue={true} />
             <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
             <button className='btn btn-primary' onClick={onSave}>Add</button>
