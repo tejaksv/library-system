@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import HelloWorld from './HelloWorld';
 import reportWebVitals from './reportWebVitals';
+import SignUp from './components/Project/signup';
+import Login from './components/Project/login';
 import TableRender from './TableRender';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TableRender />
+    {/* <TableRender /> */}
+    {/* <SignUp /> */}
+    <Login />
   </React.StrictMode>
 );
 
