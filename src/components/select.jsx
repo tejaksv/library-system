@@ -17,12 +17,6 @@ function Select(props) {
                         {option.label}
                     </option>
                 ))} 
-            <select id={id} name={id} className="col-5" value={value} onChange={onCommonChange}>
-                {options.map((option, index) => (
-                    <option key={index} value={option.value}>
-                        {option.label}
-                    </option>
-                ))} 
             </select>
         </div>
     );
