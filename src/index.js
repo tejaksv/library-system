@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import HelloWorld from './HelloWorld';
+// import App from './App';
+// import HelloWorld from './HelloWorld';
 import reportWebVitals from './reportWebVitals';
-import TableRender from './TableRender';
+// import TableRender from './TableRender';
+import Main from './main';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TableRender />
-  </React.StrictMode>
+    {/* <TableRender /> */}
+    <Main/>
+  </React.StrictMode> 
 );
 
 // If you want to start measuring performance in your app, pass a function
