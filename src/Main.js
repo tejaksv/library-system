@@ -1,21 +1,36 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./components/Login";
 import SignIn from "./components/SignIn";
-import Login from "./components/Login";   
-
 
 const Main = () => {
   const [users, setUsers] = useState([]);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(false);
 
   const handleSignIn = (user) => {
-    setUsers([...users, user]);
-    setIsLogin(true);
+    setUsers([...users, { username: user.username, password: user.password }]);
+    setIsSignIn(false); // Switch to login after sign-up
   };
 
   return (
     <div className="container mt-5">
-      {!isLogin ? <SignIn onSignIn={handleSignIn} /> : <Login users={users} />}
+      {/* Toggle Buttons */}
+      <div className="d-flex justify-content-center mb-3">
+        <button
+          className={`btn ${!isSignIn ? "btn-primary" : "btn-secondary"} mx-2`}
+          onClick={() => setIsSignIn(false)}
+        >
+          Login
+        </button>
+        <button
+          className={`btn ${isSignIn ? "btn-primary" : "btn-secondary"} mx-2`}
+          onClick={() => setIsSignIn(true)}
+        >
+          Sign In
+        </button>
+      </div>
+
+      <div className="card p-4">{isSignIn ? <SignIn onSignIn={handleSignIn} /> : <Login users={users} />}</div>
     </div>
   );
 };

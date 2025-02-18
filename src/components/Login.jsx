@@ -15,13 +15,8 @@ const Login = ({ users }) => {
     }
   };
 
-  // Handle cancel button click
-  const handleCancel = () => {
-    setLoginData({ username: "", password: "" });
-  };
-
   return (
-    <div className="card p-4">
+    <div>
       <h2>Login</h2>
       <input
         type="text"
@@ -37,14 +32,9 @@ const Login = ({ users }) => {
         value={loginData.password}
         onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
       />
-      <div className="d-flex justify-content-between">
-        <button className="btn btn-success" onClick={handleLogin}>
-          Login
-        </button>
-        <button className="btn btn-secondary" onClick={handleCancel}>
-          Cancel
-        </button>
-      </div>
+      <button className="btn btn-success" onClick={handleLogin}>
+        Login
+      </button>
     </div>
   );
 };

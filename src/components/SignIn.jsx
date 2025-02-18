@@ -22,12 +22,8 @@ const SignIn = ({ onSignIn }) => {
     }
   };
 
-  const handleCancel = () => {
-    setSignInData({ username: "", email: "", password: "", rePassword: "" });
-  };
-
   return (
-    <div className="card p-4">
+    <div>
       <h2>Sign In</h2>
       <input
         type="text"
@@ -57,14 +53,9 @@ const SignIn = ({ onSignIn }) => {
         value={signInData.rePassword}
         onChange={(e) => setSignInData({ ...signInData, rePassword: e.target.value })}
       />
-      <div className="d-flex justify-content-between">
-        <button className="btn btn-primary" onClick={handleSignIn}>
-          Sign In
-        </button>
-        <button className="btn btn-secondary" onClick={handleCancel}>
-          Cancel
-        </button>
-      </div>
+      <button className="btn btn-primary" onClick={handleSignIn}>
+        Sign In
+      </button>
     </div>
   );
 };
