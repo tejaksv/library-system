@@ -8,7 +8,7 @@ function RadioButton(props) {
             <label className="col-6">{title}</label>
             <span className="col-5">
                 {options.map((option) => (
-                    <>
+                   <>
                         <input type="radio" id={option.value} name={id} value={option.value} />
                         <label for={option.value}>{option.label}</label>
                     </>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Table from 'react-table';
+
 import TableForm from './TableForm';
 
 const TableRender = () => {
@@ -18,7 +18,7 @@ const TableRender = () => {
 
     const onSave = () => {
         if (!company || !contact || country === "") {
-            // alert("Please fill all the fields.");
+
             let errorsCopy = {};
             errorsCopy.company = !company ? true : false;
             errorsCopy.contact = !contact ? true : false;
@@ -37,7 +37,7 @@ const TableRender = () => {
         <>
             <div className='row'>
                 <div className='col-6 d-flex justify-content-end'>
-                    <button className='btn btn-primary' style={{float: 'right'}}>+</button>
+                    <button className='btn btn-primary' style={{ float: 'right' }}>+</button>
                 </div>
             </div>
             <div className='row'>
@@ -88,5 +88,6 @@ const TableRender = () => {
         </>
     )
 }
+
 
 export default TableRender;
