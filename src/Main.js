@@ -9,12 +9,12 @@ const Main = () => {
 
   const handleSignIn = (user) => {
     setUsers([...users, { username: user.username, password: user.password }]);
-    setIsSignIn(false); // Switch to login after sign-up
+    setIsSignIn(false); 
   };
 
   return (
     <div className="container mt-5">
-      {/* Toggle Buttons */}
+      
       <div className="d-flex justify-content-center mb-3">
         <button
           className={`btn ${!isSignIn ? "btn-primary" : "btn-secondary"} mx-2`}
