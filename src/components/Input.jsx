@@ -1,7 +1,7 @@
 import React from "react";
 
 function Input(props) {
-    const { title, id, placeholder, setChangeValue, value, error } = props;
+    const { title, id, placeholder, setChangeValue, value, error, isDisable } = props;
 
     const onCommonChange = (e) => {
         setChangeValue(e.target.value);
@@ -21,6 +21,7 @@ function Input(props) {
                 placeholder={"Enter " + placeholder}
                 onChange={onCommonChange}
                 value={value}
+                disabled={isDisable}
             />
         </div>
     )
