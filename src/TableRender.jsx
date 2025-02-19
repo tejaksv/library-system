@@ -9,7 +9,7 @@ const TableRender = () => {
     const [contact, setContact] = useState("");
     const [country, setCountry] = useState("");
 
-    useEffect(() => {
+    useEffect(() => {  
         setData([
             { company: 'Blueverse', "contact-name": "XYZ", country_name: "UK" },
             { company: 'Garudaven', "contact-name": "Chenna Reddy", country_name: "US" }
@@ -32,10 +32,10 @@ const TableRender = () => {
         setContact("");
         setCountry("");
     }
-
+  
     return (
         <>
-            <div className='row'>
+            <div className='row'> 
                 <div className='col-6 d-flex justify-content-end'>
                     <button className='btn btn-primary' style={{float: 'right'}}>+</button>
                 </div>

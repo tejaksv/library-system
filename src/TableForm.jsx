@@ -13,7 +13,14 @@ function TableForm(props) {
         value: 'female',
         label: 'Female'
     }]
-
+    const countries = [
+        { value: "uk", label: "UK" },
+        { value: "usa", label: "USA" },
+        { value: "india", label: "India" },
+        { value: "australia", label: "Australia" }
+      ];
+      
+    
     return (
         <>
             <Input
@@ -21,16 +28,20 @@ function TableForm(props) {
                 id="company"
                 placeholder="company name"
                 value={company}
-                setChangeValue={setCompany}
+                setChangeValue={setCompany} 
                 error={errors.company || false}
             />
+            
             <Input title="Contact" id="contact" placeholder="contact name" value={contact} setChangeValue={setContact} error={errors.contact || false} />
-            <Select title="Country" id="country" setChangeValue={setCountry} />
+            <Select title="Country" id="country"  options={countries} setChangeValue={setCountry} />
             <Checkbox title="VIP" id="vip" defaultValue={true} />
             <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
             <button className='btn btn-primary' onClick={onSave}>Add</button>
         </>
     )
+
 }
 
 export default TableForm;
+
+
