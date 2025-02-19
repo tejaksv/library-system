@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Input from './components/Input';
 import Select from './components/select';
 import Checkbox from './components/checkbox';
 import RadioButton from './components/RadioButton'
 
 function TableForm(props) {
-    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry } = props;
-
+    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry, editRecord, formMode } = props;
     const genderOptions = [{
         value: 'male',
         label: 'Male'
@@ -22,15 +21,13 @@ function TableForm(props) {
         {value: 'australia',label: 'AUSTRALIA'}
     ];
 
-    <select
-            title="country"
-            id="country"
-            names="country"
-            options={countryOptions}
-            value={country}
-            setvalue={setCountry}
-            />    
-            return (
+    useEffect(() => {
+        setCompany(editRecord.company);
+        setContact(editRecord['contact-name']);
+        setCountry(editRecord.country);
+    }, [editRecord])
+
+    return (
         <>
             <Input
                 title="Company"
@@ -39,9 +36,10 @@ function TableForm(props) {
                 value={company}
                 setChangeValue={setCompany}
                 error={errors.company || false}
+                isDisable={formMode === "edit"}
             />
             <Input title="Contact" id="contact" placeholder="contact name" value={contact} setChangeValue={setContact} error={errors.contact || false} />
-            <Select title="Country" id="country"options={countryOptions} setChangeValue={setCountry} />
+            <Select title="Country" id="country" setChangeValue={setCountry} value={country} />
             <Checkbox title="VIP" id="vip" defaultValue={true} />
             <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
             <button className='btn btn-primary' onClick={onSave}>Add</button>
