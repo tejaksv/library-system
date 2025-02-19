@@ -26,14 +26,14 @@ const TableRender = () => {
 
     const onSave = () => {
         if (!company || !contact || country === "") {
-            // let errorsCopy = errors;
+            let errorsCopy = errors;
             errorsCopy.company = !company ? true : false;
             errorsCopy.contact = !contact ? true : false;
             errorsCopy.country = !country ? true : false;
             setErrors(errorsCopy);
-            // if (Object.values(errorsCopy).includes(true)) {
-            //     return;
-            // }
+            if (Object.values(errorsCopy).includes(true)) {
+                return;
+            }
         }
         if (formMode === "edit") {
             let recordIndex = data.filter((record, index) => {
@@ -46,8 +46,8 @@ const TableRender = () => {
             actualData[recordIndex]["contact-name"] = contact;
             actualData[recordIndex].country = country;
             setData(actualData);
-            // setEditRecord({});
-            // setFormMode("create");
+            setEditRecord({});
+            setFormMode("create");
         } else {
             setData([...data, { company, "contact-name": contact, country: country }]);
         }
@@ -59,7 +59,7 @@ const TableRender = () => {
 
     const deleteRecord = (e) => {
         let copyData = data;
-        // const id = parseInt(e.target.id);
+        const id = parseInt(e.target.id);
         copyData.splice(id, 1);
         setData([...copyData]);
     }
@@ -86,8 +86,8 @@ const TableRender = () => {
                             <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                             <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
                             <td style={{ border: '1px solid black' }}>
-                                <button className='btn btn-primary' id={entry.index} onClick={deleteRecord}>-</button>
-                                {/* <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button> */}
+                                {/* <button className='btn btn-primary' id={entry.index} onClick={deleteRecord}>-</button> */}
+                                <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
                             </td>
                         </tr>
                     ))}
