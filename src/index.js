@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Authform from './components/Authform';
 import reportWebVitals from './reportWebVitals';
 import TableRender from './TableRender';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TableRender />
+    {/* <TableRender /> */}
+    < Authform/>
   </React.StrictMode>
 );
 
@@ -15,3 +17,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+ 
