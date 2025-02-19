@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 const Login = () => {
   const [data, setData] = useState({ username: "", password: "" });
   const { username, password } = data;
@@ -32,7 +31,7 @@ const Login = () => {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card p-4 shadow-lg">
-            <h2 className="text-center mb-4">Login</h2>
+            <h2 className="text-center mb-4">Login To React course</h2>
             <form onSubmit={submitHandler}>
               <div className="mb-3">
                 <label className="form-label">Username:</label>
@@ -44,6 +43,18 @@ const Login = () => {
               </div>
               <button type="submit" className="btn btn-primary w-100">Login</button>
             </form>
+            <div className="text-center mt-3">
+              <button className="btn btn-link" onClick={() => navigate("/signup")}>
+                Forgot Password?
+              </button>
+            </div>
+            <div className="text-center mt-3">
+              <p>Don't have an account? 
+                <button className="btn btn-link p-0" onClick={() => navigate("/signup")}>
+                  Signup
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </div>

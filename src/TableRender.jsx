@@ -86,7 +86,7 @@ const TableRender = () => {
                             <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                             <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
                             <td style={{ border: '1px solid black' }}>
-                                <button className='btn btn-primary' id={entry.id} onClick={deleteRecord}>-</button>
+                                <button className='btn btn-primary' id={entry.index} onClick={deleteRecord}>-</button>
                             </td>
                         </tr>
                     ))}
