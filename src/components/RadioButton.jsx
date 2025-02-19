@@ -10,7 +10,7 @@ function RadioButton(props) {
                 {options.map((option) => (
                     <>
                         <input type="radio" id={option.value} name={id} value={option.value} />
-                        <label for={option.value}>{option.label}</label>
+                        <label for={option.value} style={{paddingLeft: '2px', paddingRight: '7px'}}>{option.label}</label>
                     </>
                 ))}
             </span>
