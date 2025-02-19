@@ -6,18 +6,19 @@ function Select(props) {
     const onCommonChange = (e) => {
         setChangeValue(e.target.value);
     };
-    
+
     return (
         <div className="row" style={{ marginBottom: "5px" }}>
             <label htmlFor={id} className="col-6">{title}</label>
-            <select id="country" name="country" className="col-5" onChange={onCommonChange}>
-                <option value="uk">UK</option>
-                <option value="usa">USA</option>
-                <option value="india">India</option>
-                <option value="australia">Australia</option>
+            <select id={id} name={id} className="col-5" value={value} onChange={onCommonChange}>
+                {options.map((option, index) => (
+                    <option key={index} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
             </select>
         </div>
-    )
+    );
 }
 
 export default Select;
