@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Authform from './components/Authform';
+// import Authform from './components/Authform';
 import reportWebVitals from './reportWebVitals';
 import TableRender from './TableRender';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <TableRender /> */}
-    < Authform/>
+    {<TableRender /> }
+    {/* npm install react@18 react-dom@18
+  */}
   </React.StrictMode>
 );
 
