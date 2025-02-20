@@ -40,6 +40,7 @@ const TableRender = () => {
                     return index;
                 }
             });
+            // find use and 39-41
             recordIndex = recordIndex[0].id - 1;
             let actualData = data;
             actualData[recordIndex]["contact-name"] = contact;
@@ -47,6 +48,7 @@ const TableRender = () => {
             setData(actualData);
         } else {
             setData([...data, { company, "contact-name": contact, country: country }]);
+            // (...)=> 3 dots  spread operator
         }
         setErrors({});
         setCompany("");
@@ -60,7 +62,9 @@ const TableRender = () => {
         console.log(e.target.id);
         let copyData = data;
         const id = parseInt(e.target.id) - 1;
+        // @parseInt — A string to convert into a number.
         copyData.splice(id, 1);
+        // deleting the elements from the data
         setData([...copyData]);
     }
 
