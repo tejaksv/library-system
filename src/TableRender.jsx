@@ -26,13 +26,14 @@ const TableRender = () => {
 
     const onSave = () => {
         if (!company || !contact || country === "") {
-            // alert("Please fill all the fields.");
-            let errorsCopy = {};
+            let errorsCopy = errors;
             errorsCopy.company = !company ? true : false;
             errorsCopy.contact = !contact ? true : false;
             errorsCopy.country = !country ? true : false;
             setErrors(errorsCopy);
-            return;
+            if (Object.values(errorsCopy).includes(true)) {
+                return;
+            }
         }
         if (formMode === "edit") {
             let recordIndex = data.filter((record, index) => {
@@ -46,6 +47,8 @@ const TableRender = () => {
             actualData[recordIndex]["contact-name"] = contact;
             actualData[recordIndex].country = country;
             setData(actualData);
+            setEditRecord({});
+            setFormMode("create");
         } else {
             setData([...data, { company, "contact-name": contact, country: country }]);
             // (...)=> 3 dots  spread operator
@@ -54,15 +57,16 @@ const TableRender = () => {
         setCompany("");
         setContact("");
         setCountry("");
-        setEditRecord({});
-        setFormMode("create");
     }
 
     const deleteRecord = (e) => {
-        console.log(e.target.id);
         let copyData = data;
-        const id = parseInt(e.target.id) - 1;
-        // @parseInt — A string to convert into a number.
+
+        // const id = parseInt(e.target.id) - 1;
+        // // @parseInt — A string to convert into a number.
+
+        const id = parseInt(e.target.id);
+
         copyData.splice(id, 1);
         // deleting the elements from the data
         setData([...copyData]);
@@ -90,7 +94,7 @@ const TableRender = () => {
                             <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                             <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
                             <td style={{ border: '1px solid black' }}>
-                                <button className='btn btn-primary' id={entry.id} onClick={deleteRecord}>-</button>
+                                <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
                             </td>
                         </tr>
                     ))}
