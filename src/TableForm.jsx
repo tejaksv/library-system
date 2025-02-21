@@ -5,7 +5,7 @@ import Checkbox from './components/checkbox';
 import RadioButton from './components/RadioButton'
 
 function TableForm(props) {
-    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry} = props;
+    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry,setEditRecord,editRecord,record} = props;
 
 
     const genderOptions = [
