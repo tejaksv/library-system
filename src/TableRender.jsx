@@ -13,6 +13,7 @@ const TableRender = () => {
 
     useEffect(() => {
         setData([
+<<<<<<< HEAD
             { id: 1, company: 'Blueverse', "contact-name": "XYZ", country: "uk" },
             { id: 2, company: 'Garudaven', "contact-name": "Chenna Reddy", country: "usa" }
         ]);
@@ -22,6 +23,16 @@ const TableRender = () => {
     const selectedRow = (index) => {
         const record = data[index];
         setEditIndex(index);
+=======
+            { company: 'Blueverse', "contact-name": "XYZ", country: "uk" },
+            { company: 'Garudaven', "contact-name": "Chenna Reddy", country: "usa" }
+        ])
+    }, []);
+
+    const selectedRow = (e) => {
+        const findRecord = data[e.target.id];
+        setEditRecord(findRecord);
+>>>>>>> 7db9ae27bfddcec705a285ba4c1cbaf9bc88d6fc
         setFormMode("edit");
         // Populate the form fields with the selected record's data.
         setCompany(record.company);
@@ -41,17 +52,33 @@ const TableRender = () => {
         if (Object.values(errorsCopy).includes(true)) {
             return;
         }
+<<<<<<< HEAD
 
         if (formMode === "edit" && editIndex !== null) {
             // Create a new array with the updated record.
             const updatedData = data.map((record, i) => {
                 if (i === editIndex) {
                     return { ...record, "contact-name": contact, country: country };
+=======
+        if (formMode === "edit") {
+            let recordIndex;
+            data.find((record, index) => {
+                if (record.company === editRecord.company) {
+                    recordIndex = index;
+>>>>>>> 7db9ae27bfddcec705a285ba4c1cbaf9bc88d6fc
                 }
                 return record;
             });
+<<<<<<< HEAD
             setData(updatedData);
             setEditIndex(null);
+=======
+            let actualData = data;
+            actualData[recordIndex]["contact-name"] = contact;
+            actualData[recordIndex].country = country;
+            setData(actualData);
+            setEditRecord({});
+>>>>>>> 7db9ae27bfddcec705a285ba4c1cbaf9bc88d6fc
             setFormMode("create");
         } else {
             // Generate a new id; here we simply add 1 to the maximum current id.
@@ -71,22 +98,46 @@ const TableRender = () => {
         setData(updatedData);
     };
 
+    const deleteAllRecord = () => {
+        setData([]);
+    }
+
     return (
         <>
             <div className='row'>
                 <div className='col-6 d-flex justify-content-end'>
                     <button className='btn btn-primary' style={{ float: 'right' }}>+</button>
+                    <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>-</button>
                 </div>
             </div>
             <div className='row'>
                 <span className='col-1'></span>
                 <table className='col-5' style={{ border: '1px solid black' }}>
+<<<<<<< HEAD
                     <thead>
                         <tr style={{ border: '1px solid black' }}>
                             <th style={{ border: '1px solid black' }}>Company</th>
                             <th style={{ border: '1px solid black' }}>Contact</th>
                             <th style={{ border: '1px solid black' }}>Country</th>
                             <th style={{ border: '1px solid black' }}></th>
+=======
+                    <tr style={{ border: '1px solid black' }}>
+                        <th style={{ border: '1px solid black' }}>Company</th>
+                        <th style={{ border: '1px solid black' }}>Contact</th>
+                        <th style={{ border: '1px solid black' }}>Country</th>
+                        <th style={{ border: '1px solid black' }}>
+
+                        </th>
+                    </tr>
+                    {data.map((entry, index) => (
+                        <tr style={{ border: '1px solid black' }}>
+                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={index}>{entry.company}</td>
+                            <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
+                            <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
+                            <td style={{ border: '1px solid black' }}>
+                                <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
+                            </td>
+>>>>>>> 7db9ae27bfddcec705a285ba4c1cbaf9bc88d6fc
                         </tr>
                     </thead>
                     <tbody>
