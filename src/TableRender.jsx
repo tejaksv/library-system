@@ -19,21 +19,20 @@ const TableRender = () => {
     }, []);
 
     const selectedRow = (e) => {
-        const findRecord = data.find(record => record.id === parseInt(e.target.id));
+        const findRecord = data[e.target.id];
         setEditRecord(findRecord);
         setFormMode("edit");
     }
 
     const onSave = () => {
         if (!company || !contact || country === "") {
-            let errorsCopy = errors;
+            // alert("Please fill all the fields.");
+            let errorsCopy = {};
             errorsCopy.company = !company ? true : false;
             errorsCopy.contact = !contact ? true : false;
             errorsCopy.country = !country ? true : false;
             setErrors(errorsCopy);
-            if (Object.values(errorsCopy).includes(true)) {
-                return;
-            }
+            return;
         }
         if (formMode === "edit") {
             let recordIndex = data.filter((record, index) => {
@@ -46,8 +45,6 @@ const TableRender = () => {
             actualData[recordIndex]["contact-name"] = contact;
             actualData[recordIndex].country = country;
             setData(actualData);
-            setEditRecord({});
-            setFormMode("create");
         } else {
             setData([...data, { company, "contact-name": contact, country: country }]);
         }
@@ -55,11 +52,14 @@ const TableRender = () => {
         setCompany("");
         setContact("");
         setCountry("");
+        setEditRecord({});
+        setFormMode("create");
     }
 
     const deleteRecord = (e) => {
+        console.log(e.target.id);
         let copyData = data;
-        const id = parseInt(e.target.id);
+        const id = parseInt(e.target.id) - 1;
         copyData.splice(id, 1);
         setData([...copyData]);
     }
@@ -82,11 +82,11 @@ const TableRender = () => {
                     </tr>
                     {data.map((entry, index) => (
                         <tr style={{ border: '1px solid black' }}>
-                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={entry.id}>{entry.company}</td>
+                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={index}>{entry.company}</td>
                             <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                             <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
                             <td style={{ border: '1px solid black' }}>
-                                <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
+                                <button className='btn btn-primary' id={index} onClick={deleteRecord}>-</button>
                             </td>
                         </tr>
                     ))}
