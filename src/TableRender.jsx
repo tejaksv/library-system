@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-table';
 import TableForm from './TableForm';
-
+ 
 const TableRender = () => {
     const [data, setData] = useState([{}]);
     const [errors, setErrors] = useState({});
@@ -10,20 +10,37 @@ const TableRender = () => {
     const [contact, setContact] = useState("");
     const [country, setCountry] = useState("");
     const [formMode, setFormMode] = useState("create");
-
-    useEffect(() => {  
+    const [selectedRows, setSelectedRows] = useState([]);
+    const [selectAll, setSelectAll] = useState(false);
+ 
+    useEffect(() => {
         setData([
-            { id: 1, company: 'Blueverse', "contact-name": "XYZ", country: "uk" },
-            { id: 2, company: 'Garudaven', "contact-name": "Chenna Reddy", country: "usa" }
+            { company: 'Blueverse', "contact-name": "XYZ", country: "uk" },
+            { company: 'Garudaven', "contact-name": "Chenna Reddy", country: "usa" }
         ])
     }, []);
-
+ 
     const selectedRow = (e) => {
-        const findRecord = data.find(record => record.id === parseInt(e.target.id));
+        const findRecord = data[e.target.id];
         setEditRecord(findRecord);
         setFormMode("edit");
     }
-
+    const handleCheckboxChange = (index) => {
+        setSelectedRows((prevSelected) =>
+            prevSelected.includes(index)
+                ? prevSelected.filter((i) => i !== index)
+                : [...prevSelected, index]
+        );
+    }
+    const handleSelectAll = () => {
+        if (selectAll) {
+            setSelectedRows([]);
+        } else {
+            setSelectedRows(data.map((_, index) => index));
+        }
+        setSelectAll(!selectAll);
+    }
+ 
     const onSave = () => {
         if (!company || !contact || country === "") {
             let errorsCopy = errors;
@@ -36,12 +53,12 @@ const TableRender = () => {
             }
         }
         if (formMode === "edit") {
-            let recordIndex = data.filter((record, index) => {
+            let recordIndex;
+            data.find((record, index) => {
                 if (record.company === editRecord.company) {
-                    return index;
+                    recordIndex = index;
                 }
             });
-            recordIndex = recordIndex[0].id - 1;
             let actualData = data;
             actualData[recordIndex]["contact-name"] = contact;
             actualData[recordIndex].country = country;
@@ -56,38 +73,66 @@ const TableRender = () => {
         setContact("");
         setCountry("");
     }
-
+ 
     const deleteRecord = (e) => {
         let copyData = data;
         const id = parseInt(e.target.id);
         copyData.splice(id, 1);
         setData([...copyData]);
     }
-
+ 
+//    // const deleteAllRecord = () => {
+//        // setData([]);
+//     }
+    const deleteSelectedRecords = () => {
+        setData((prevData) => prevData.filter((_, index) => !selectedRows.includes(index)));
+        setSelectedRows([]);
+        setSelectAll(false);
+    };
+ 
+    const deleteAllRecord = () => {
+        setData([]);
+        setSelectedRows([]);
+        setSelectAll(false);
+    };
+ 
     return (
         <>
-            <div className='row'> 
+            <div className='row'>
                 <div className='col-6 d-flex justify-content-end'>
                     <button className='btn btn-primary' style={{ float: 'right' }}>+</button>
+                    <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>-</button>
+                   {/* <button className='btn btn-danger' onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>Delete All</button> */}
+                   {selectedRows.length > 0 && (
+    <button className='btn btn-danger' onClick={deleteSelectedRecords} style={{ marginLeft: '5px' }}>
+        Delete
+    </button>
+)}
+ 
+ 
                 </div>
             </div>
             <div className='row'>
                 <span className='col-1'></span>
                 <table className='col-5' style={{ border: '1px solid black' }}>
                     <tr style={{ border: '1px solid black' }}>
+                       <th><input type="checkbox"checked={selectAll} onChange={handleSelectAll}  /></th>
                         <th style={{ border: '1px solid black' }}>Company</th>
                         <th style={{ border: '1px solid black' }}>Contact</th>
                         <th style={{ border: '1px solid black' }}>Country</th>
-                        <th style={{ border: '1px solid black' }}></th>
+                        {/* <th style={{ border: '1px solid black' }}>
+ 
+                        </th> */}
                     </tr>
                     {data.map((entry, index) => (
                         <tr style={{ border: '1px solid black' }}>
-                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={entry.id}>{entry.company}</td>
+                            <td><input type="checkbox"checked={selectedRows.includes(index)}onChange={() => handleCheckboxChange(index)} /></td>      
+                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={index}>{entry.company}</td>
                             <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                             <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
-                            <td style={{ border: '1px solid black' }}>
-                                <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
-                            </td>
+                            {/* <td style={{ border: '1px solid black' }}>
+                                {/* <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button> */}
+                            {/* </td> */}
                         </tr>
                     ))}
                 </table>
@@ -108,6 +153,7 @@ const TableRender = () => {
             </div>
         </>
     )
-}
-
+};
+ 
 export default TableRender;
+ 

@@ -3,6 +3,7 @@ import Input from './components/Input';
 import Select from './components/select';
 import Checkbox from './components/checkbox';
 import RadioButton from './components/RadioButton'
+import { Dropdown } from 'bootstrap';
 
 function TableForm(props) {
     const { company, contact, country, errors, onSave, setCompany, setContact, setCountry, editRecord, formMode } = props;
@@ -13,6 +14,12 @@ function TableForm(props) {
         value: 'female',
         label: 'Female'
     }]
+    const dropdownOptions = [{
+        value: 'Uk', label: 'Uk'
+    },
+    { value: 'Usa', label: 'Usa' },
+    { value: 'India', label: 'India' },
+    { value: 'Australia', label: 'Australia' }]
 
     useEffect(() => {
         setCompany(editRecord.company);
@@ -33,10 +40,12 @@ function TableForm(props) {
             />
             
             <Input title="Contact" id="contact" placeholder="contact name" value={contact} setChangeValue={setContact} error={errors.contact || false} />
-            <Select title="Country" id="country" setChangeValue={setCountry} value={country} />
+            {/* <Select title="Country" id="country" setChangeValue={setCountry} value={country} /> */}
+            <Select title="Country" id="country" setChangeValue={setCountry} options={dropdownOptions} value={country} />
             <Checkbox title="VIP" id="vip" defaultValue={true} />
             <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
-            <button className='btn btn-primary' onClick={onSave}>Add</button>
+            <button className='btn btn-primary ml-auto' onClick={onSave} style={{ float: 'right' }}>Add</button>
+
         </>
     )
 

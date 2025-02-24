@@ -11,16 +11,16 @@ import TableRender from './TableRender';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-  //   <TableRender />
-  // </React.StrictMode>
-  <Router>
-  <Routes>
-    <Route path="/" element={<Navigate to="/WebPage-Project/signup" />} />
-    <Route path="/WebPage-Project/signup" element={<Signup />} />
-    <Route path="/WebPage-Project/signIn" element={<SignIn />} />
-  </Routes>
-</Router>
+  <React.StrictMode>
+    <TableRender />
+  </React.StrictMode>
+  // <Router>
+  // <Routes>
+  //   <Route path="/" element={<Navigate to="/WebPage-Project/signup" />} />
+  //   <Route path="/WebPage-Project/signup" element={<Signup />} />
+  //   <Route path="/WebPage-Project/signIn" element={<SignIn />} />
+  // </Routes>
+//</Router>
 
 );
 
