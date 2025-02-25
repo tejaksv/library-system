@@ -58,7 +58,7 @@ const Signup = () => {
     e.preventDefault();
     if (validateForm()) {
       localStorage.setItem("user", JSON.stringify({ username, email, password }));
-      alert("Signup successful! Redirecting to login.");
+      // alert("Signup successful! Redirecting to login.");
       navigate("/login");
     }
   };
