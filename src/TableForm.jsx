@@ -36,7 +36,7 @@ function TableForm(props) {
             <Checkbox title="VIP" id="vip" defaultValue={true} />
             <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
             <button className='btn btn-primary'style={{ float: 'right' }} onClick={onSave}>Add</button>
-            <button className='btn btn-secondary' style={{marginLeft: "5px",float: 'right' }} onClick={() => setView("table")}>Cancel</button>
+            <button className='btn btn-secondary me-2' style={{marginLeft: "5px",float: 'right' }} onClick={() => setView("table")}>Cancel</button>
         </>
     )
 }

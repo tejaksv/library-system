@@ -83,7 +83,7 @@ const TableRender = () => {
                             </div>
                         </div>
                         <div className='row'>
-                            <span className='col-1'></span>y
+                            <span className='col-1'></span>
                             <table className='col-10' style={{ border: '1px solid black' }}>
                                 <tr style={{ border: '1px solid black' }}>
                                     <th style={{ border: '1px solid black' }}>Company</th>

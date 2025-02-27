@@ -6,7 +6,7 @@ function Checkbox(props) {
     return (
         <div className="row">
             <label htmlFor={"label-" + id} className="col-6">{title}</label>
-            <input type="checkbox" id={id} name={id} value="yes" className="col-5" checked={defaultValue || false} />
+            <input type="checkbox" id={id} name={id} value="yes" className="col-1" checked={defaultValue || false} />
         </div>
     )
 }
