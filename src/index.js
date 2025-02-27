@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import HelloWorld from './HelloWorld';
+// import App from './App';
+// import HelloWorld from './HelloWorld';
 import reportWebVitals from './reportWebVitals';
 import TableRender from './TableRender';
 import Main from './Main/main.css';
@@ -14,7 +14,7 @@ root.render(
       <h1>Company Details</h1>
     </header>
     <TableRender />
-    <footer id='mainFooter'>
+    <footer class=" fixed-bottom"  id='mainFooter'>
       React JS practice
     </footer>
     

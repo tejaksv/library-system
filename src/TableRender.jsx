@@ -77,10 +77,12 @@ const TableRender = () => {
                 {view === 'table' ?
                     <>
                         <div className='row'>
-                            <div className='col-10'>
-                                <button className='btn btn-primary' style={{ float: 'right' }} onClick={() => setView("form")}>+</button>
-                                <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>-</button>
-                            </div>
+                        <div className='col-10 d-flex justify-content-end'>
+                        <button className='btn btn-primary me-1' onClick={() => setView("form")}>+</button>
+    <button className='btn btn-danger ' id="delete-all" onClick={deleteAllRecord}>-</button>
+    
+</div>
+
                         </div>
                         <div className='row'>
                             <span className='col-1'></span>
@@ -110,7 +112,7 @@ const TableRender = () => {
                     <>
                         <span className='col-1'></span>
                         <span className='col-10'>
-                            <h2>Enter Details</h2>
+                            <h2 style={{ textAlign: "center" }}>Enter Details</h2>
                             <TableForm
                                 company={company}
                                 contact={contact}
