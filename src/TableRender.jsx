@@ -147,7 +147,6 @@ const TableRender = () => {
                 </div>
             </div>
 
-<<<<<<< Updated upstream
             <div className="row">
                 <div className="col-5">
                     <table style={{ width: "100%", border: "1px solid black" }}>
@@ -209,33 +208,6 @@ const TableRender = () => {
                 </div>
 
                 <div className="col-6">
-=======
-                        </th>
-                    </tr>
-                    <tbody>
-                        {data.map((entry, index) => (
-                            <tr key={entry.id} style={{ border: '1px solid black' }}>
-                                <td
-                                    style={{ border: '1px solid black', cursor: 'pointer' }}
-                                    onClick={() => selectedRow(index)}
-                                >
-                                    {entry.company}
-                                </td>
-                                <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
-                                <td style={{ border: '1px solid black' }}>{entry.country || "India"}</td>
-                                <td style={{ border: '1px solid black' }}>
-                                    <button className='btn btn-danger' onClick={() => deleteRecord(index)}>
-                                        -
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                
-
-                <div className='col-6'>
->>>>>>> Stashed changes
                     <TableForm
                         company={company}
                         contact={contact}
