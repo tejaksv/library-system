@@ -5,11 +5,19 @@ import App from './App';
 import HelloWorld from './HelloWorld';
 import reportWebVitals from './reportWebVitals';
 import TableRender from './TableRender';
+import Main from './CSS/Main.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <header className='mainHeader'>
+      <h1>Company Details</h1>
+    </header>
     <TableRender />
+    <footer id='mainFooter' class="bg-dark text-white text-center py-3 fixed-bottom">
+      React JS practice
+    </footer>
+    
   </React.StrictMode>
 );
 

@@ -79,11 +79,11 @@ const TableRender = () => {
                         <div className='row'>
                             <div className='col-10'>
                                 <button className='btn btn-primary' style={{ float: 'right' }} onClick={() => setView("form")}>+</button>
-                                <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>-</button>
+                                <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px',  float: 'right'}}>-</button>
                             </div>
                         </div>
                         <div className='row'>
-                            <span className='col-1'></span>
+                            <span className='col-1'></span>y
                             <table className='col-10' style={{ border: '1px solid black' }}>
                                 <tr style={{ border: '1px solid black' }}>
                                     <th style={{ border: '1px solid black' }}>Company</th>
@@ -110,7 +110,8 @@ const TableRender = () => {
                     <>
                         <span className='col-1'></span>
                         <span className='col-10'>
-                            <h2>Enter Details</h2>
+                           <h2 style={{ textAlign: "center" }}>Enter Details</h2>
+
                             <TableForm
                                 company={company}
                                 contact={contact}
