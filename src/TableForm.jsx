@@ -5,21 +5,10 @@ import Checkbox from './components/Checkbox';
 import RadioButton from './components/RadioButton';
 
 function TableForm(props) {
-<<<<<<< HEAD
     const {
         company, contact, country, errors, onSave,
         setCompany, setContact, setCountry, formMode 
     } = props;
-=======
-    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry, editRecord, formMode, setView } = props;
-    const genderOptions = [{
-        value: 'male',
-        label: 'Male'
-    }, {
-        value: 'female',
-        label: 'Female'
-    }]
->>>>>>> fa4b5cd7e61153fa034b4f76eda2f24eeeb9ccd5
 
     const genderOptions = [
         { value: 'male', label: 'Male' },
@@ -65,7 +54,6 @@ function TableForm(props) {
             />
 
             <Checkbox title="VIP" id="vip" defaultValue={true} />
-<<<<<<< HEAD
 
             <RadioButton
                 title="Gender"
@@ -88,13 +76,6 @@ function TableForm(props) {
             </div>
         </div>
     );
-=======
-            <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
-            <button className='btn btn-primary' onClick={onSave}>Add</button>
-            <button className='btn btn-secondary' style={{marginLeft: "5px"}} onClick={() => setView("table")}>Cancel</button>
-        </>
-    )
->>>>>>> fa4b5cd7e61153fa034b4f76eda2f24eeeb9ccd5
 }
 
 export default TableForm;
