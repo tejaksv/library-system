@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Input from './components/Input';
 import Select from './components/select';
 import Checkbox from './components/checkbox';
-import RadioButton from './components/RadioButton'
+import RadioButton from './components/RadioButton';
  
 function TableForm(props) {
     const { company, contact, country, errors, onSave, setCompany, setContact, setCountry, editRecord, formMode, setView } = props;
