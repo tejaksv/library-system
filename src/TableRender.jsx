@@ -7,7 +7,7 @@ const TableRender = () => {
     const [errors, setErrors] = useState({});
     const [editRecord, setEditRecord] = useState({});
     const [company, setCompany] = useState("");
-    const [contact, setContact] = useState("");
+    const [contact, setContact] = useState("");b
     const [country, setCountry] = useState("");
     const [formMode, setFormMode] = useState("create");
     const [selectedRows, setSelectedRows] = useState([]);
@@ -23,7 +23,7 @@ const TableRender = () => {
     const selectedRow = (e) => {
         const findRecord = data[e.target.id];
         setEditRecord(findRecord);
-        setFormMode("edit");
+        setFormMode("edit"); 
     }
     const handleCheckboxChange = (index) => {
         setSelectedRows((prevSelected) =>
@@ -50,7 +50,7 @@ const TableRender = () => {
             setErrors(errorsCopy);
             if (Object.values(errorsCopy).includes(true)) {
                 return;
-            }
+            } 
         }
         if (formMode === "edit") {
             let recordIndex;
@@ -61,7 +61,7 @@ const TableRender = () => {
             });
             let actualData = data;
             actualData[recordIndex]["contact-name"] = contact;
-            actualData[recordIndex].country = country;
+            actualData[recordIndex].country = country;hb
             setData(actualData);
             setEditRecord({});
             setFormMode("create");

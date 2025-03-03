@@ -19,7 +19,7 @@ const Signup = () => {
         localStorage.setItem("Email", email);
         localStorage.setItem("Password", password);
         alert("Sign-up successful! You can now log in.");
-        navigate("/Project/login");
+        navigate("/webPage-Project/signin");
     }
     return (
         <div className="mt-5 mb-5">
