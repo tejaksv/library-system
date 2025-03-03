@@ -14,9 +14,10 @@ root.render(
       <h1>Company Details</h1>
     </header>
       <TableRender />
-    <footer id='mainFooter'>
+      <footer id='mainFooter'>
       React JS practice
     </footer>
+    
   </React.StrictMode>
 );
 
