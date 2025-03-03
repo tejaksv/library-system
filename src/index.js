@@ -4,12 +4,18 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 // import Main from './Main';
 import TableRender from './TableRender';
+import MainCss from './css/main.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TableRender />
-    {/* <Main/> */}
+    <header className='mainHeader'>
+      <h1>Company Details</h1>
+    </header>
+      <TableRender />
+    <footer id='mainFooter'>
+      React JS practice
+    </footer>
   </React.StrictMode>
 );
 
