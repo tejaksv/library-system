@@ -6,7 +6,7 @@ import RadioButton from './components/RadioButton'
 import { Dropdown } from 'bootstrap';
 
 function TableForm(props) {
-    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry, editRecord, formMode } = props;
+    const { company, contact, country, errors, onSave, setCompany, setContact, setCountry, editRecord, formMode, setView } = props;
     const genderOptions = [{
         value: 'male',
         label: 'Male'
@@ -44,8 +44,13 @@ function TableForm(props) {
             <Select title="Country" id="country" setChangeValue={setCountry} options={dropdownOptions} value={country} />
             <Checkbox title="VIP" id="vip" defaultValue={true} />
             <RadioButton title="Gender" name="gender" id="gender" options={genderOptions} />
+<<<<<<< HEAD
             <button className='btn btn-primary ml-auto' onClick={onSave} style={{ float: 'right' }}>Add</button>
 
+=======
+            <button className='btn btn-primary' onClick={onSave}>Add</button>
+            <button className='btn btn-secondary' style={{marginLeft: "5px"}} onClick={() => setView("table")}>Cancel</button>
+>>>>>>> c370c3e96d41deba2cde6365c3a9d3e01071d710
         </>
     )
 

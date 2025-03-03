@@ -8,13 +8,11 @@ import reportWebVitals from './reportWebVitals';
 import Signup from './WebPage-Project/signup';
 import SignIn from './WebPage-Project/signIn';
 import TableRender from './TableRender';
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import TableForm from './TableForm';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <TableRender />
-    
   </React.StrictMode>
 //   <Router>
 //   <Routes>

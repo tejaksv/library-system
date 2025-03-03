@@ -10,9 +10,7 @@ const TableRender = () => {
     const [contact, setContact] = useState("");b
     const [country, setCountry] = useState("");
     const [formMode, setFormMode] = useState("create");
-    const [selectedRows, setSelectedRows] = useState([]);
-    const [selectAll, setSelectAll] = useState(false);
- 
+
     useEffect(() => {
         setData([
             { company: 'Blueverse', "contact-name": "XYZ", country: "uk" },
@@ -23,7 +21,7 @@ const TableRender = () => {
     const selectedRow = (e) => {
         const findRecord = data[e.target.id];
         setEditRecord(findRecord);
-        setFormMode("edit"); 
+        setFormMode("edit");
     }
     const handleCheckboxChange = (index) => {
         setSelectedRows((prevSelected) =>
@@ -72,6 +70,7 @@ const TableRender = () => {
         setCompany("");
         setContact("");
         setCountry("");
+        setView("table");
     }
  
     const deleteRecord = (e) => {
@@ -101,38 +100,25 @@ const TableRender = () => {
             <div className='row'>
                 <div className='col-6 d-flex justify-content-end'>
                     <button className='btn btn-primary' style={{ float: 'right' }}>+</button>
-                    <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>-</button>
-                   {/* <button className='btn btn-danger' onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>Delete All</button> */}
-                   {selectedRows.length > 0 && (
-    <button className='btn btn-danger' onClick={deleteSelectedRecords} style={{ marginLeft: '5px' }}>
-        Delete
-    </button>
-)}
- 
- 
                 </div>
             </div>
             <div className='row'>
                 <span className='col-1'></span>
                 <table className='col-5' style={{ border: '1px solid black' }}>
                     <tr style={{ border: '1px solid black' }}>
-                       <th><input type="checkbox"checked={selectAll} onChange={handleSelectAll}  /></th>
                         <th style={{ border: '1px solid black' }}>Company</th>
                         <th style={{ border: '1px solid black' }}>Contact</th>
                         <th style={{ border: '1px solid black' }}>Country</th>
-                        {/* <th style={{ border: '1px solid black' }}>
- 
-                        </th> */}
+                        <th style={{ border: '1px solid black' }}></th>
                     </tr>
                     {data.map((entry, index) => (
                         <tr style={{ border: '1px solid black' }}>
-                            <td><input type="checkbox"checked={selectedRows.includes(index)}onChange={() => handleCheckboxChange(index)} /></td>      
-                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={index}>{entry.company}</td>
+                            <td style={{ border: '1px solid black' }} onClick={selectedRow} id={entry.id}>{entry.company}</td>
                             <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                             <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
-                            {/* <td style={{ border: '1px solid black' }}>
-                                {/* <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button> */}
-                            {/* </td> */}
+                            <td style={{ border: '1px solid black' }}>
+                                <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
+                            </td>
                         </tr>
                     ))}
                 </table>
