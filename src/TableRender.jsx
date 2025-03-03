@@ -9,7 +9,7 @@ const TableRender = () => {
     const [company, setCompany] = useState("");
     const [contact, setContact] = useState("");
     const [country, setCountry] = useState("");
-    const [formMode, setFormMode] = useState("create");
+    const [formMode, setFormMode] = useState("create"); 
 
     useEffect(() => {
         setData([
@@ -36,12 +36,12 @@ const TableRender = () => {
             }
         }
         if (formMode === "edit") {
-            let recordIndex = data.filter((record, index) => {
-                if (record.company === editRecord.company) {
-                    return index;
+            let recordIndex;
+            data.find((record,index) => {
+                if (record.company === editRecord.company) { 
+                    recordIndex = index;
                 }
             });
-            recordIndex = recordIndex[0].id - 1;
             let actualData = data;
             actualData[recordIndex]["contact-name"] = contact;
             actualData[recordIndex].country = country;
@@ -63,12 +63,16 @@ const TableRender = () => {
         copyData.splice(id, 1);
         setData([...copyData]);
     }
+    const deleteAllRecord = () =>{
+        setData([]);
+    }
 
     return (
         <>
             <div className='row'>
                 <div className='col-6 d-flex justify-content-end'>
                     <button className='btn btn-primary' style={{ float: 'right' }}>+</button>
+                    <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginleft: '5px' }}>--</button>
                 </div>
             </div>
             <div className='row'>
