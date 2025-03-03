@@ -78,8 +78,8 @@ const TableRender = () => {
                     <>
                         <div className='row'>
                             <div className='col-10'>
-                                <button className='btn btn-primary' style={{ float: 'right' }} onClick={() => setView("form")}>+</button>
-                                <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px',  float: 'right'}}>-</button>
+                                <button className='btn btn-primary me-1' style={{ float: 'right' }} onClick={() => setView("form")}>+</button>
+                                <button className='btn btn-danger me-1' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px',  float: 'right'}}>-</button>
                             </div>
                         </div>
                         <div className='row'>
@@ -99,7 +99,7 @@ const TableRender = () => {
                                         <td style={{ border: '1px solid black' }}>{entry["contact-name"]}</td>
                                         <td style={{ border: '1px solid black' }}>{entry?.country || "India"}</td>
                                         <td style={{ border: '1px solid black' }}>
-                                            <button className='btn btn-danger' id={index} onClick={deleteRecord}>-</button>
+                                            <button className='btn btn-danger me-2' id={index} onClick={deleteRecord}>-</button>
                                         </td>
                                     </tr>
                                 ))}

@@ -8,11 +8,11 @@ import TableRender from './TableRender';
 import Main from './CSS/Main.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render( 
   <React.StrictMode>
     <header className='mainHeader'>
       <h1>Company Details</h1>
-    </header>
+    </header> 
     <TableRender />
     <footer id='mainFooter' class="bg-dark text-white text-center py-3 fixed-bottom">
       React JS practice
