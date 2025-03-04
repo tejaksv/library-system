@@ -5,6 +5,7 @@ function Input(props) {
 
     const onCommonChange = (e) => {
         setChangeValue(e.target.value);
+        console.log()
     };
 
     return (
