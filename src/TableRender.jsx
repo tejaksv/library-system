@@ -79,7 +79,7 @@ const TableRender = () => {
                         <div className='row'>
                             <div className='col-10'>
                                 <button className='btn btn-primary' style={{ float: 'right' }} onClick={() => setView("form")}>+</button>
-                                <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px' }}>-</button>
+                                <button className='btn btn-danger' id="delete-all" onClick={deleteAllRecord} style={{ marginLeft: '5px', float: 'right' }}>-</button>
                             </div>
                         </div>
                         <div className='row'>
