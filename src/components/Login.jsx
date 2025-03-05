@@ -13,7 +13,9 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+    if (!username || !password) {
+      alert("Both username and password are required");
+      return;
     }
     const savedUser = JSON.parse(localStorage.getItem("user"));
     if (savedUser && savedUser.username === username && savedUser.password === password) {
