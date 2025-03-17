@@ -20,6 +20,19 @@ function TableForm(props) {
         setCountry(editRecord.country);
     }, [editRecord])
 
+    const changeValue = (value, isValid, key) => {
+        const errorFields = errors;
+        const formData = data;
+        if (isValid){
+            errorFields[key] = isValid;
+        } else {
+            delete errorFields[key];
+        }
+        formData[key] = value;
+        setErrors(errorFields);
+        setFormData(formData);
+    }
+
     return (
         <>
             <Input
@@ -30,6 +43,7 @@ function TableForm(props) {
                 setChangeValue={setCompany}
                 error={errors.company || false}
                 isDisable={formMode === "edit"}
+                validators={['required', 'userName']}
             />
             <Input title="Contact" id="contact" placeholder="contact name" value={contact} setChangeValue={setContact} error={errors.contact || false} />
             <Select title="Country" id="country" setChangeValue={setCountry} value={country} />

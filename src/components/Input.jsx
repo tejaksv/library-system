@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { userName } from './FormValidators'
 
 function Input(props) {
-    const { title, id, placeholder, setChangeValue, value, error, isDisable } = props;
+    const { title, id, placeholder, setChangeValue, value, error, isDisable, validators } = props;
+    const [fieldTitle, setFieldTitle] = useState("");
 
     const onCommonChange = (e) => {
-        setChangeValue(e.target.value);
+        const fieldValue = e.target.value
+        var fieldError = false;
+        if (validators && validators.includes('required')) {
+            if (!fieldValue) {
+                fieldError = true;
+            }
+        }
+        if (validators && validators.includes('userName')) {
+            const validationDetails = userName(fieldValue);
+            if (!validationDetails.isValid) {
+                fieldError = true;
+                setFieldTitle(validationDetails.message);
+            } else {
+                setFieldTitle(fieldValue);
+            }
+        }
+        setChangeValue(fieldValue, fieldError, id);
     };
 
     return (
@@ -22,6 +40,7 @@ function Input(props) {
                 onChange={onCommonChange}
                 value={value}
                 disabled={isDisable}
+                title={fieldTitle}
             />
         </div>
     )
